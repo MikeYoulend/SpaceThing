@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-    void OnCollisionEnter(Collision other) 
+    void OnCollisionEnter(Collision other)   // Switch Case
     {
-        switch (other.gameObject.tag)
+        switch (other.gameObject.tag)  //nelle parentesi mettiamo quello che dobbiamo passare all'array
         {
-            case "Friendly":
+            case "Friendly":    //Primo caso
                 Debug.Log("This thing is friendly");
                 break;
-            case "Finish": 
+            case "Finish":      //Secondo caso
                 Debug.Log("congrats, yo, you finished!");
                 break;
-            case "Fuel":
+            case "Fuel":        //terzo caso
                 Debug.Log("Picked up FUEL");
                 break;
-            default: 
+            default:            //default si usa per tutto il resto che non abbia un tag
                 Debug.Log("Sorry, you blew up");
                 break;
         }
