@@ -1,4 +1,7 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -16,8 +19,16 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Picked up FUEL");
                 break;
             default:            //default si usa per tutto il resto che non abbia un tag
-                Debug.Log("Sorry, you blew up");
+                ReloadLevel();
                 break;
         }
     }
+
+
+    void ReloadLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
 }
