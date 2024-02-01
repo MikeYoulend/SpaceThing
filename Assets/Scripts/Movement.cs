@@ -32,10 +32,12 @@ public class Movement : MonoBehaviour
             if(!audioSource.isPlaying)
             {
                 audioSource.Play();
-            }  else 
+            } 
+        } else 
             {
                 audioSource.Stop();
             }
+        
     }
 
     void ProcessRotation()
