@@ -29,10 +29,13 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {   
             rb.AddRelativeForce(UnityEngine.Vector3.up * mainThrust * Time.deltaTime); //is a short for (0, 1, 0)
-            audioSource.Play();
-        } else {
-            audioSource.Stop();
-        }
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }  else 
+            {
+                audioSource.Stop();
+            }
     }
 
     void ProcessRotation()
