@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9180595492802224063}
   - component: {fileID: 3049533171263737468}
+  - component: {fileID: 3701734040123333473}
   - component: {fileID: 6522512642738110085}
   - component: {fileID: 7319128273702429605}
   m_Layer: 0
@@ -56,6 +57,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationForce: 250
   mainThrust: 1000
+--- !u!114 &3701734040123333473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058957193881349433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828220db7628e93439ea5b166852f1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &6522512642738110085
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -419,7 +432,7 @@ Transform:
   m_GameObject: {fileID: 2563184901532127695}
   serializedVersion: 2
   m_LocalRotation: {x: -0.02978243, y: 0.0187128, z: -0.28424343, w: 0.95810676}
-  m_LocalPosition: {x: 0.18899989, y: -1.1040001, z: 0.05899954}
+  m_LocalPosition: {x: 0.22, y: -1.07, z: 0.06}
   m_LocalScale: {x: 0.3195, y: 0.30657002, z: 0.45404997}
   m_ConstrainProportionsScale: 0
   m_Children: []
