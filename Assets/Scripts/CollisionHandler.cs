@@ -7,6 +7,15 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float LevelLoadDelay = 2f;
+    [SerializeField] AudioClip Success;
+    [SerializeField] AudioClip Death;
+
+    AudioSource audioSource;
+
+    void Start() 
+    {
+     audioSource = GetComponent<AudioSource>();   
+    }
 
      void OnCollisionEnter(Collision other)   // Switch Case
     {
@@ -21,19 +30,22 @@ public class CollisionHandler : MonoBehaviour
             default:            //default si usa per tutto il resto che non abbia un tag
                 StartCrashSequence();
                 break;
+                
         }
     }
 
     void StartCrashSequence()
     {   
-        //To do add sfx upon crash
+      
         //todo add particle effect upon crash
+        audioSource.PlayOneShot(Death);
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", LevelLoadDelay);  //Invoca il ReloadLevel dopo 1 secondoReloadLevel();
     }
 
     void StartNextLevelSequence()
-    {
+    {   
+        audioSource.PlayOneShot(Success);
         GetComponent<Movement>().enabled = false;
         Invoke("NextLevel", LevelLoadDelay);
     }
