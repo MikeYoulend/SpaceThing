@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9180595492802224063}
   - component: {fileID: 3049533171263737468}
+  - component: {fileID: 5081572519511110674}
   - component: {fileID: 3701734040123333473}
   - component: {fileID: 6522512642738110085}
   - component: {fileID: 7319128273702429605}
@@ -58,6 +59,21 @@ MonoBehaviour:
   rotationForce: 250
   mainThrust: 1000
   mainEngine: {fileID: 8300000, guid: 58931f1ac7340b749abc246091fc5d16, type: 3}
+--- !u!114 &5081572519511110674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058957193881349433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828220db7628e93439ea5b166852f1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelLoadDelay: 2
+  Success: {fileID: 0}
+  Death: {fileID: 0}
 --- !u!114 &3701734040123333473
 MonoBehaviour:
   m_ObjectHideFlags: 0

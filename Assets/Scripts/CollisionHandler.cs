@@ -12,13 +12,20 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource audioSource;
 
+    bool isTransitioning = false;
+
     void Start() 
     {
-     audioSource = GetComponent<AudioSource>();   
+     audioSource = GetComponent<AudioSource>();   //Se non facciamo un getcomponent non si può utilizzare nel resto del codice
     }
 
      void OnCollisionEnter(Collision other)   // Switch Case
     {
+        if (isTransitioning) //Se IsTransitioning è vero allora riparti in qualsiasi altro caso, vai avanti
+        {
+            return;
+        }
+
         switch (other.gameObject.tag)  //nelle parentesi mettiamo quello che dobbiamo passare all'array
         {
             case "Friendly":    //Primo caso
@@ -36,7 +43,8 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {   
-      
+        isTransitioning = true; //nel momento in cui mi schianto isTransitioning diventa true
+        audioSource.Stop();
         //todo add particle effect upon crash
         audioSource.PlayOneShot(Death);
         GetComponent<Movement>().enabled = false;
@@ -45,6 +53,8 @@ public class CollisionHandler : MonoBehaviour
 
     void StartNextLevelSequence()
     {   
+        isTransitioning = true; //nel momento in cui atterro sul landing pad isTransitioning diventa true
+        audioSource.Stop();
         audioSource.PlayOneShot(Success);
         GetComponent<Movement>().enabled = false;
         Invoke("NextLevel", LevelLoadDelay);
