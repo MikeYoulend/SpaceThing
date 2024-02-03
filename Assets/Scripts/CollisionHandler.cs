@@ -18,15 +18,32 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransitioning = false; //In breve, isTransitioning è come un segnale che dice se l'oggetto sta facendo qualcosa di importante in un dato momento, e durante quel periodo vuoi evitare che si verifichino altre azioni che potrebbero causare problemi o interferenze.
+    bool collisionDisable = false;
 
     void Start() 
     {
      audioSource = GetComponent<AudioSource>();   //Se non facciamo un getcomponent non si può utilizzare nel resto del codice
     }
 
+    void Update()
+    {
+        RespondToDebugKeys();
+    }
+
+    void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L)) {
+            StartNextLevelSequence();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisable = !collisionDisable; //toggle collision
+        }
+    }
+
      void OnCollisionEnter(Collision other)   // Switch Case
     {
-        if (isTransitioning) //Se IsTransitioning è vero allora riparti in qualsiasi altro caso, vai avanti
+        if (isTransitioning || collisionDisable) //Se IsTransitioning è vero allora riparti in qualsiasi altro caso, vai avanti
         {
             return;
         }
@@ -46,6 +63,7 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
+
     void StartCrashSequence()
     {   
         isTransitioning = true; //nel momento in cui mi schianto isTransitioning diventa true
@@ -56,6 +74,7 @@ public class CollisionHandler : MonoBehaviour
         Invoke("ReloadLevel", LevelLoadDelay);  //Invoca il ReloadLevel dopo 1 secondoReloadLevel();
     }
 
+
     void StartNextLevelSequence()
     {   
         isTransitioning = true; //nel momento in cui atterro sul landing pad isTransitioning diventa true
@@ -65,6 +84,8 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<Movement>().enabled = false;
         Invoke("NextLevel", LevelLoadDelay);
     }
+
+
     void NextLevel()
     {   
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //Attuale index di cui abbiamo la scena attiva
@@ -75,6 +96,8 @@ public class CollisionHandler : MonoBehaviour
         }
         SceneManager.LoadScene(nextSceneIndex); //se if non esiste allora carica la prossima scena
     }
+
+
     void ReloadLevel()
     {
         // Ottieni il numero della "pagina" (indice) della scena che stai attualmente "leggendo" (attiva)
