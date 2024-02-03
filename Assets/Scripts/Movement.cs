@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
             rb.AddRelativeForce(UnityEngine.Vector3.up * mainThrust * Time.deltaTime); //is a short for (0, 1, 0)
             if(!audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(mainEngine);
+                audioSource.PlayOneShot(mainEngine, 0.6f );
             } 
         } else 
             {

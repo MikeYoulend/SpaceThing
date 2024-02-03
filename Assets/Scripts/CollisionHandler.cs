@@ -10,6 +10,10 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip Success;
     [SerializeField] AudioClip Death;
 
+    [SerializeField] ParticleSystem SuccessParticles;
+    [SerializeField] ParticleSystem DeathParticles;
+
+
     AudioSource audioSource;
 
     bool isTransitioning = false;
@@ -46,7 +50,7 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = true; //nel momento in cui mi schianto isTransitioning diventa true
         audioSource.Stop();
         //todo add particle effect upon crash
-        audioSource.PlayOneShot(Death);
+        audioSource.PlayOneShot(Death, 0.3f );
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", LevelLoadDelay);  //Invoca il ReloadLevel dopo 1 secondoReloadLevel();
     }
@@ -55,7 +59,7 @@ public class CollisionHandler : MonoBehaviour
     {   
         isTransitioning = true; //nel momento in cui atterro sul landing pad isTransitioning diventa true
         audioSource.Stop();
-        audioSource.PlayOneShot(Success);
+        audioSource.PlayOneShot(Success, 0.4f);
         GetComponent<Movement>().enabled = false;
         Invoke("NextLevel", LevelLoadDelay);
     }
