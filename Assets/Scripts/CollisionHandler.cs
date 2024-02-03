@@ -43,7 +43,7 @@ public class CollisionHandler : MonoBehaviour
 
      void OnCollisionEnter(Collision other)   // Switch Case
     {
-        if (isTransitioning || collisionDisable) //Se IsTransitioning è vero allora riparti in qualsiasi altro caso, vai avanti
+        if (isTransitioning || collisionDisable) //Se IsTransitioning O collisionDisable è vero allora riparti in qualsiasi altro caso, vai avanti
         {
             return;
         }
