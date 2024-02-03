@@ -14,9 +14,10 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem DeathParticles;
 
 
+
     AudioSource audioSource;
 
-    bool isTransitioning = false;
+    bool isTransitioning = false; //In breve, isTransitioning è come un segnale che dice se l'oggetto sta facendo qualcosa di importante in un dato momento, e durante quel periodo vuoi evitare che si verifichino altre azioni che potrebbero causare problemi o interferenze.
 
     void Start() 
     {
@@ -49,7 +50,7 @@ public class CollisionHandler : MonoBehaviour
     {   
         isTransitioning = true; //nel momento in cui mi schianto isTransitioning diventa true
         audioSource.Stop();
-        //todo add particle effect upon crash
+        DeathParticles.Play(DeathParticles);
         audioSource.PlayOneShot(Death, 0.3f );
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", LevelLoadDelay);  //Invoca il ReloadLevel dopo 1 secondoReloadLevel();
@@ -59,6 +60,7 @@ public class CollisionHandler : MonoBehaviour
     {   
         isTransitioning = true; //nel momento in cui atterro sul landing pad isTransitioning diventa true
         audioSource.Stop();
+        SuccessParticles.Play();
         audioSource.PlayOneShot(Success, 0.4f);
         GetComponent<Movement>().enabled = false;
         Invoke("NextLevel", LevelLoadDelay);
