@@ -7,7 +7,7 @@ public class Oscillator : MonoBehaviour
 {
     UnityEngine.Vector3 startingPosition;
     [SerializeField] UnityEngine.Vector3 movementVector;
-    [SerializeField] UnityEngine.Vector3 movementFactor;
+    [SerializeField] [Range(0,1)] float movementFactor; //Range delimita il movivento tra 0 e 1
 
     // Start is called before the first frame update
     void Start()
